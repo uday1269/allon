@@ -1,0 +1,29 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY first.py /app/
+CMD ["python", "first.py"]
+
+next------>
+
+ren "dockerfile.txt" dockerfile
+
+
+next------>
+
+docker build -t python312 trail .
+
+docker build -t python312 .
+
+Docker run python312
+
+Docker login
+
+Docker tag python312 username/python312
+
+Docker push username/python312-sum
+
+Docker push username/python312
+
+Docker ps
+  
+
