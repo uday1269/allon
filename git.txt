@@ -1,0 +1,29 @@
+git pull.....
+
+mkdir git_demo
+cd git_demo
+pwd(link)
+mkdir changes
+cd changes
+pwd
+git init
+git pull (links)
+C:/windows/notepad alpha
+C:/windows/notepad beta
+git status
+git add .
+git commit -m "changes made"
+git remote add origin (link)
+git remote -v
+git push -u origin master
+
+
+git push.............
+
+git init
+git status
+git add .
+git commit -m "hellow world"
+git branch -M main
+git remote add origin (link)
+git push -u origin main
