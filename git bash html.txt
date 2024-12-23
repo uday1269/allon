@@ -1,0 +1,26 @@
+mkdir hello
+
+cd hello
+
+pwd
+
+touch index.html
+
+notepad index.html
+
+touch dockerfile
+
+notepad dockerfile
+
+docker build -t hello .
+
+docker run -d -p 8080:80 hello
+
+
+browse the link -------->
+
+http://localhost:8080
+
+
+
+
