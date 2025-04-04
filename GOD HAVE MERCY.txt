@@ -1,0 +1,343 @@
+DWDM CODES:
+Program 1: Equal-Frequency, Equal-Width, and Clustering Partitioning in R# Data
+sales_price <- c(5, 10, 11, 13, 15, 35, 50, 55, 72, 92, 204, 215)
+
+# Equal-Frequency Partitioning
+equal_freq_bins <- cut(sales_price, breaks = 3, labels = c("Low", "Medium", "High"), include.lowest = TRUE)
+print("Equal-Frequency Partitioning:")
+print(equal_freq_bins)
+
+# Equal-Width Partitioning
+equal_width_bins <- cut(sales_price, breaks = seq(min(sales_price), max(sales_price), length.out = 4), labels = c("Low", "Medium", "High"), include.lowest = TRUE)
+print("Equal-Width Partitioning:")
+print(equal_width_bins)
+
+# Clustering (K-Means)
+set.seed(123)
+clusters <- kmeans(sales_price, centers = 3)
+print("Clustering Partitioning:")
+print(clusters$cluster)
+--------------------------------------------------------------------------------------
+Program 2: Decision Tree in R
+# Install and load the necessary package
+install.packages("rpart")
+library(rpart)
+
+# Data
+data <- data.frame(
+  Economy = c("Good", "Bad"),
+  Expand = c(7, 3),
+  No_Expand = c(4, 1.5)
+)
+
+# Decision Tree
+tree <- rpart(Expand ~ ., data = data, method = "class")
+print(tree)
+--------------------------------------------------------------------------------------
+Program 4: Normalization in R
+# Data
+data <- c(200, 300, 400, 600, 1000)
+
+# Min-Max Normalization
+min_max_norm <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+print("Min-Max Normalization:")
+print(min_max_norm(data))
+
+# Z-Score Normalization
+z_score_norm <- function(x) {
+  (x - mean(x)) / sd(x)
+}
+print("Z-Score Normalization:")
+print(z_score_norm(data))
+-----------------------------------------------------------------------------------------
+Program 5: Scatterplot and Bar Chart in R
+# Load dataset
+diabetes <- read.csv("diabetes.csv")
+
+# Scatterplot
+plot(diabetes$Age, diabetes$BloodPressure, main = "Blood Pressure vs Age", xlab = "Age", ylab = "Blood Pressure", col = "blue")
+
+# Bar Chart
+barplot(table(diabetes$Age), main = "Age Distribution", xlab = "Age", ylab = "Frequency", col = "green")
+-----------------------------------------------------------------------------------------------------------------------------------
+Program 6: Linear and Multiple Regression in R
+# Load dataset
+diabetes <- read.csv("diabetes.csv")
+
+# Linear Regression
+linear_model <- lm(BloodPressure ~ Age, data = diabetes)
+summary(linear_model)
+
+# Multiple Regression
+multiple_model <- lm(BloodPressure ~ Age + BMI, data = diabetes)
+summary(multiple_model)
+-------------------------------------------------------------------------------------
+Program 9: Quartile Calculation in R
+# Data
+age <- c(13, 15, 16, 16, 19, 20, 20, 21, 22, 22, 25, 25, 25, 25, 30, 33, 33, 35, 35, 35, 35, 36, 40, 45, 46, 52, 70)
+
+# Quartiles
+Q1 <- quantile(age, 0.25)
+Q3 <- quantile(age, 0.75)
+print("First Quartile (Q1):")
+print(Q1)
+print("Third Quartile (Q3):")
+print(Q3)
+-----------------------------------------------------------------------------------------------------------------------------
+Program 10: Linear Regression in R
+# Load dataset
+water <- read.csv("water.csv")
+
+# Linear Regression
+model <- lm(mortality ~ hardness, data = water)
+summary(model)
+
+# Predict mortality for hardness = 88
+predict(model, newdata = data.frame(hardness = 88))
+-----------------------------------------------------------------------------------
+Program 13: Equal-Frequency Partitioning and Smoothing in R
+# Data
+prices <- c(1, 1, 5, 5, 5, 5, 5, 8, 8, 10, 10, 10, 10, 12, 14, 14, 14, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 25, 25, 25, 25, 28, 28, 30, 30, 30)
+
+# Equal-Frequency Partitioning
+equal_freq_bins <- cut(prices, breaks = 3, labels = c("Low", "Medium", "High"), include.lowest = TRUE)
+print("Equal-Frequency Partitioning:")
+print(equal_freq_bins)
+
+# Bin Means Smoothing
+bin_means <- tapply(prices, equal_freq_bins, mean)
+print("Bin Means Smoothing:")
+print(bin_means)
+---------------------------------------------------------------------------------------
+Program 14: Boxplot in R
+# Data
+class_A <- c(76, 35, 47, 64, 95, 66, 89, 36, 84)
+class_B <- c(51, 56, 84, 60, 59, 70, 63, 66, 50)
+
+# Boxplot
+boxplot(class_A, class_B, names = c("Class A", "Class B"), main = "Class Performance", col = c("red", "blue"))
+---------------------------------------------------------------------------------------------------------------------
+Program 16: Clustering in R
+# Data
+data <- data.frame(
+  Emails_Opened = c(10, 20, 30, 40, 50),
+  Clicks_Per_Email = c(2, 3, 4, 5, 6),
+  Time_Spent = c(5, 10, 15, 20, 25)
+)
+
+# K-Means Clustering
+set.seed(123)
+clusters <- kmeans(data, centers = 2)
+print("Clusters:")
+print(clusters$cluster)
+-----------------------------------------------------------------------------------------------------------------------
+Program 17: Boxplot and Scatterplot in R
+# Data
+age <- c(23, 23, 27, 27, 39, 41, 47, 49, 50, 52, 54, 54, 56, 57, 58, 58, 60, 61)
+fat <- c(9.5, 26.5, 7.8, 17.8, 31.4, 25.9, 27.4, 27.2, 31.2, 34.6, 42.5, 28.8, 33.4, 30.2, 34.1, 32.9, 41.2, 35.7)
+
+# Boxplot
+boxplot(age, fat, names = c("Age", "%Fat"), main = "Age vs %Fat", col = c("red", "blue"))
+
+# Scatterplot
+plot(age, fat, main = "Age vs %Fat", xlab = "Age", ylab = "%Fat", col = "blue")
+-------------------------------------------------------------------
+Program 18: Normalization in R
+# Data
+age <- c(23, 23, 27, 27, 39, 41, 47, 49, 50, 52, 54, 54, 56, 57, 58, 58, 60, 61)
+
+# Min-Max Normalization
+min_max_norm <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+print("Min-Max Normalization:")
+print(min_max_norm(age))
+
+# Z-Score Normalization
+z_score_norm <- function(x) {
+  (x - mean(x)) / sd(x)
+}
+print("Z-Score Normalization:")
+print(z_score_norm(age))
+-------------------------------------------------------------------------------------------
+Program 19: Clustering in R
+# Data
+data <- data.frame(
+  Annual_Income = c(15, 15, 16, 16, 17),
+  Spending_Score = c(39, 81, 6, 77, 40)
+)
+
+# K-Means Clustering
+set.seed(123)
+clusters <- kmeans(data, centers = 3)
+print("Clusters:")
+print(clusters$cluster)
+----------------------------------------------------------
+Program 20: Hierarchical Clustering in R
+# Data
+data <- data.frame(
+  Minutes_Watched = c(60, 120, 90, 150, 180),
+  Viewing_Sessions = c(5, 10, 7, 12, 15),
+  Unique_Shows = c(3, 5, 4, 6, 8)
+)
+
+# Hierarchical Clustering
+hc <- hclust(dist(data))
+plot(hc, main = "Hierarchical Clustering")
+--------------------------------------------------------------
+Program 21: Mean, Median, and Mode in R
+# Data
+pencils <- c(25, 23, 12, 11, 6, 7, 8, 9, 10)
+
+# Mean
+mean_pencils <- mean(pencils)
+print("Mean:")
+print(mean_pencils)
+
+# Median
+median_pencils <- median(pencils)
+print("Median:")
+print(median_pencils)
+
+# Mode
+mode_pencils <- as.numeric(names(sort(table(pencils), decreasing = TRUE)[1]))
+print("Mode:")
+print(mode_pencils)
+-----------------------------------------------------------------------------------
+Program 22: Boxplot in R
+# Data
+points <- c(50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150)
+
+# Boxplot
+boxplot(points, main = "Points Scored by Players", col = "blue")
+--------------------------------------------------------------------------
+Program 25: Vegetarian Count in R
+# Data
+vegetarian <- c("yes", "yes", "yes", "no", "yes", "no", "no", "yes", "yes", "yes")
+
+# Count
+vegetarian_count <- sum(vegetarian == "yes")
+non_vegetarian_count <- sum(vegetarian == "no")
+print("Vegetarian Count:")
+print(vegetarian_count)
+print("Non-Vegetarian Count:")
+print(non_vegetarian_count)
+---------------------------------------------------------------------------
+Program 26: Scatterplot in R
+# Data
+x <- c(4, 1, 5, 7, 10, 2, 50, 25, 90, 36)
+y <- c(12, 5, 13, 19, 31, 7, 153, 72, 275, 110)
+
+# Scatterplot
+plot(x, y, main = "Mobile Phones Sold vs Money", xlab = "Mobile Phones Sold", ylab = "Money", col = "blue")
+----------------------------------------------------------------------------------------------------------------
+Program 29: Equal-Frequency and Equal-Width Partitioning in R
+# Data
+marks <- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+
+# Equal-Frequency Partitioning
+equal_freq_bins <- cut(marks, breaks = 3, labels = c("Low", "Medium", "High"), include.lowest = TRUE)
+print("Equal-Frequency Partitioning:")
+print(equal_freq_bins)
+
+# Equal-Width Partitioning
+equal_width_bins <- cut(marks, breaks = seq(min(marks), max(marks), length.out = 4), labels = c("Low", "Medium", "High"), include.lowest = TRUE)
+print("Equal-Width Partitioning:")
+print(equal_width_bins)
+------------------------------------------------------------------------------------------------------------------------------------------
+Program 32: Normalization in R
+# Data
+strike_rates <- c(100, 70, 60, 90, 90)
+
+# Min-Max Normalization
+min_max_norm <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+print("Min-Max Normalization:")
+print(min_max_norm(strike_rates))
+
+# Z-Score Normalization
+z_score_norm <- function(x) {
+  (x - mean(x)) / sd(x)
+}
+print("Z-Score Normalization:")
+print(z_score_norm(strike_rates))
+----------------------------------------------------------------------------------------
+Program 33: Standard Deviation and Variance in R
+# Data
+avg_speed <- c(78, 81, 82, 74, 83, 82, 77, 80, 70)
+total_time <- c(39, 37, 36, 42, 35, 36, 40, 38, 46)
+
+# Standard Deviation
+sd_speed <- sd(avg_speed)
+sd_time <- sd(total_time)
+print("Standard Deviation of Avg Speed:")
+print(sd_speed)
+print("Standard Deviation of Total Time:")
+print(sd_time)
+
+# Variance
+var_speed <- var(avg_speed)
+var_time <- var(total_time)
+print("Variance of Avg Speed:")
+print(var_speed)
+print("Variance of Total Time:")
+print(var_time)
+-----------------------------------------------------------
+Program 34: Histogram and Scatterplot in R
+# Data
+age <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+tumor_size <- c(5, 10, 15, 20, 25, 30, 35, 40, 45, 50)
+
+# Histogram
+hist(age, main = "Age Distribution", xlab = "Age", col = "blue")
+
+# Scatterplot
+plot(age, tumor_size, main = "Age vs Tumor Size", xlab = "Age", ylab = "Tumor Size", col = "red")
+---------------------------------------------------------------------------------------------------
+Program 35: Confusion Matrix in R
+# Data
+actual <- c("Wolf", "No Wolf", "Wolf", "No Wolf")
+predicted <- c("Wolf", "No Wolf", "No Wolf", "Wolf")
+
+# Confusion Matrix
+confusion_matrix <- table(actual, predicted)
+print("Confusion Matrix:")
+print(confusion_matrix)
+--------------------------------------------------------------
+Program 37: Mean and Interquartile Range in R
+# Data
+age <- c(30, 57, 68, 96, 39, 40, 20, 19, 42, 12, 25, 25, 65, 35, 30, 23, 23, 35, 45, 85)
+
+# Mean
+mean_age <- mean(age)
+print("Mean Age:")
+print(mean_age)
+
+# Interquartile Range
+iqr_age <- IQR(age)
+print("Interquartile Range:")
+print(iqr_age)
+---------------------------------------------------------------------------------------------
+Program 38: Normalization in R
+# Data
+data <- c(200, 300, 400, 600, 1000)
+
+# Min-Max Normalization
+min_max_norm <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+print("Min-Max Normalization:")
+print(min_max_norm(data))
+
+# Z-Score Normalization
+z_score_norm <- function(x) {
+  (x - mean(x)) / sd(x)
+}
+print("Z-Score Normalization:")
+print(z_score_norm(data))
+---------------------------------------------------------
+
+
